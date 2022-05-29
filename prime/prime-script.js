@@ -4,14 +4,13 @@ function primeCheck(num) {
     // Checks if num is prime by checking the mod of num and all numbers smaller than num
     // excluding 0 and 1
     let isPrime = true;
-    for (let i = 0; i < num; i++) {
+    for (let i = 0; i < Math.ceil(num/2); i++) {
         if (num % i === 0 && ![0,1].includes(i)) {
             isPrime = false;
         }
     }
-    let primeString;
-    (isPrime) ? primeString = 'Prime' : primeString = 'Not prime'
-    return primeString;
+
+    return isPrime;
 }
 
 function primeGen(startNum, endNum) {
@@ -34,7 +33,9 @@ document.getElementById('prime-check-button').addEventListener('click', () => {
     if (isNaN(input)) {
         alert('Please enter a valid number');
     } else {
-        document.getElementById('prime-check-output').innerHTML = `${input}: ${primeCheck(input)}`
+        isPrime = primeCheck(+input);
+        let primeString = (isPrime) ? 'Prime' : 'Not prime';
+        document.getElementById('prime-check-output').innerHTML = `${input}: ${primeString}`
     }
 });
 
@@ -50,6 +51,7 @@ document.getElementById('prime-gen-button').addEventListener('click', () => {
     } else if (+startNum >= +endNum) {
         alert('Please enter a valid range');
     } else {
+
         document.getElementById('prime-gen-output').innerHTML = primeGen(startNum, endNum);
     }
 
