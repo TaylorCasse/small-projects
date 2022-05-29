@@ -31,7 +31,7 @@
             </div>
             <p id="fizz-output"></p>
         </div>
-
+<!-- 
         <div class="content-container">
             <h2>Prime Numbers</h2>
             <div class="input-container">
@@ -41,7 +41,7 @@
                 </button>
             </div>
             <p id="prime-check-output"></p>
-        </div>
+        </div> -->
         
         <div class="content-container">
             <h2>nth Highest</h2>
@@ -54,10 +54,18 @@
         </div>
 
         <div class="content-container">
-            <h2></h2>
+            <h2>Primes</h2>
             <div class="input-container">
-                <p></p>
-                <input type="text"><button>Run</button>
+                <p>Enter a number to check if it's prime: </p>
+                <input type="text" id="prime-check-input">
+                <button id="prime-check-button">Run</button>
+                <p id="prime-check-output"></p>
+
+                <p>Output all primes in range: </p>
+                <input type="text" id="prime-gen-start">
+                <input type="text" id="prime-gen-end">
+                <button id="prime-gen-button">Run</button>
+                <p id="prime-gen-output"></p>
             </div>
         </div>
 
@@ -95,6 +103,7 @@
     </div>
     <script src="./leap-year-calc/leap-year-script.js"></script>
     <script src="./fizz-buzz/fizz-buzz-script.js"></script>
+    <script src="./prime/prime-script.js"></script>
     <!-- <script scr="./useful-functions.js"></script> -->
 </body>
 </html>
