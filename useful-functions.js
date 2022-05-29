@@ -1,7 +1,7 @@
 export function sanitizeIntiger(input) {
     alert('sup');
     switch (typeof +input) {
-        case Number: {
+        case 'number': {
             return input;
         }
         default: {
