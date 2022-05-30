@@ -95,18 +95,25 @@ var arraySize;
 var arr;
 document.getElementById('nth-highest-button-1').addEventListener('click', () => {
     arraySize = document.getElementById('nth-highest-array-size').value;
-    arr = genRandArr(arraySize);
-    document.getElementById('nth-highest-output-1').innerHTML = `[${arr.join(', ')}]`;
+    console.log(+arraySize);
+    if (+arraySize === 0) {
+        alert('Please enter the size of your desired array');
+    } else if (isNaN(arraySize) || arraySize < 0) {
+        alert('Please enter a valid number for the size of your array');
+    } else {
+        arr = genRandArr(arraySize);
+        document.getElementById('nth-highest-output-1').innerHTML = `[${arr.join(', ')}]`;
+    }
 });
 
 document.getElementById('nth-highest-button-2').addEventListener('click', () => {
 
     const n = document.getElementById('nth-highest-array').value;
     const suffix = numberSuffix(n);
-    if (arraySize === undefined) {
+    if (arr === undefined) {
         alert('Please generate an array first');
     } else if (+n > arr.length) {
-        alert('Error: n > array.length');
+        alert('Error: your nth value has to be greater than the size of your array');
     } else if (isNaN(n) || +n === 0) {
         alert('Please enter a valid number');
     } else {
