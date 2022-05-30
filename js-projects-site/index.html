@@ -13,17 +13,34 @@
         <h1>Small Projects</h1>
         <div class="content-container">
             <h2>Leap Year Calculator</h2>
-            <div class="input-container">
-                <p>Enter a range of years: </p>
-                <input id="leap-input-start">
-                <input id="leap-input-end">
-                <button id="leap-button">Run</button>
+            <div class="module-container">
+                <p>Checks if a specified year is a leap year.</p>
+                <div class="input-container">
+                    <p>Check a year: </p>
+                    <input id="leap-input-check">
+                    <button id="leap-check-button">Run</button>
+                </div>
             </div>
-            <p id="leap-output"></p>
+            <div class="module-container">
+                <p>Checks all years in a specified range</p>
+                <div class="input-container">
+                    <p>Enter a range of years: </p>
+                    <input id="leap-input-start">
+                    <input id="leap-input-end">
+                    <button id="leap-button">Run</button>
+                </div>
+                <p id="leap-output"></p>
+            </div>
+
         </div>
 
         <div class="content-container">
             <h2>FizzBuzz</h2>
+            <p>
+                Enter a number and the script will output a list of numbers from 1 to your input,
+                except multiples of 3 will become Fizz, multiples of 5 will become Buzz and multiples
+                of 3 and 5 will become FizzBuzz.
+            </p>
             <div class="input-container">
                 <p>Enter a number: </p>
                 <input id="fizz-input">
@@ -34,36 +51,46 @@
         
         <div class="content-container">
             <h2>nth Highest</h2>
-            <div class="input-container">
-                <p>How big should your array be? </p>
-                <input type="text" id="nth-highest-array-size">
-                <button id="nth-highest-button-1">Gen array</button>
-                <p id="nth-highest-output-1"></p>
-                
-                <input type="text" id="nth-highest-array">
-                <button id="nth-highest-button-2">Run</button>
-                <p id="nth-highest-output-2"></p>
+            <div class="module-container">
+                <p>Generates an array of given length and returns the nth highest value</p>
+                <div class="input-container">
+                    <p>How big should your array be? </p>
+                    <input type="text" id="nth-highest-array-size">
+                    <button id="nth-highest-button-1">Gen array</button>
+                    <p id="nth-highest-output-1"></p>
+                    
+                    <input type="text" id="nth-highest-array">
+                    <button id="nth-highest-button-2">Run</button>
+                    <p id="nth-highest-output-2"></p>
+                </div>
+                <p id="nth-highest-output"></p>
             </div>
-            <p id="nth-highest-output"></p>
         </div>
 
         <div class="content-container">
             <h2>Primes</h2>
-            <div class="input-container">
-                <p>Enter a number to check if it's prime: </p>
-                <input type="text" id="prime-check-input">
-                <button id="prime-check-button">Run</button>
+            <div class="module-container">
+                <div class="input-container">
+                    <p>Enter a number to check if it's prime: </p>
+                    <input type="text" id="prime-check-input">
+                    <button id="prime-check-button">Run</button>
+                    
+                </div>
                 <p id="prime-check-output"></p>
-
-                <p>Output all primes in range: </p>
-                <input type="text" id="prime-gen-start">
-                <input type="text" id="prime-gen-end">
-                <button id="prime-gen-button">Run</button>
+                <div class="input-container">
+                    <p>Output all primes in range: </p>
+                    <input type="text" id="prime-gen-start">
+                    <input type="text" id="prime-gen-end">
+                    <button id="prime-gen-button">Run</button>
+                </div>
                 <p id="prime-gen-output"></p>
+
+                </div>
             </div>
+
         </div>
 
-        <div class="content-container">
+        <!-- <div class="content-container">
             <h2></h2>
             <div class="input-container">
                 <p></p>
@@ -84,7 +111,7 @@
             <div class="input-container">
                 <p></p>
                 <input type="text"><button>Run</button>
-            </div>
+            </div> -->
         </div>
 
 
