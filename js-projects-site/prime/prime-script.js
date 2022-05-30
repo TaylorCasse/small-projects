@@ -58,3 +58,5 @@ document.getElementById('prime-gen-button').addEventListener('click', () => {
 
 });
 
+// let test = prompt("Please enter something");
+
