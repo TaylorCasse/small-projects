@@ -9,7 +9,6 @@ function primeCheck(num) {
             isPrime = false;
         }
     }
-
     return isPrime;
 }
 
@@ -30,7 +29,7 @@ document.getElementById('prime-check-button').addEventListener('click', () => {
     const input = document.getElementById('prime-check-input').value;
 
     // Sanitize and output
-    if (isNaN(input)) {
+    if (isNaN(input) || input === '') {
         alert('Please enter a valid number');
     } else {
         isPrime = primeCheck(+input);
@@ -46,7 +45,9 @@ document.getElementById('prime-gen-button').addEventListener('click', () => {
     const endNum = document.getElementById('prime-gen-end').value;
 
     // Sanitize
-    if (isNaN(startNum) || isNaN(endNum)) {
+    if (startNum === '' || endNum === '') {
+        alert('Please enter a start and end number');
+    } else if (isNaN(startNum) || isNaN(endNum)) {
         alert('Please enter valid numbers');
     } else if (+startNum >= +endNum) {
         alert('Please enter a valid range');
@@ -56,3 +57,4 @@ document.getElementById('prime-gen-button').addEventListener('click', () => {
     }
 
 });
+
