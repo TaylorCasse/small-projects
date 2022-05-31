@@ -70,7 +70,6 @@ function winCheck(playerInput, compInput) {
                 case 'Scissors':
                     return 'Draw';
             }
-        
     }
 }
 
@@ -79,24 +78,24 @@ document.getElementById('rps-rounds-button').addEventListener('click', () => {
     if (isNaN(rounds) || rounds === '' || +rounds < 0) {
         alert('Please enter a valid number of rounds');
     } else {
+        // initialize initial variables
         const roundsElement = document.getElementById('rps-initial-input');
-        roundsElement.parentNode.removeChild(roundsElement);
-        const gameDiv = document.createElement('div');
-        gameDiv.setAttribute("id", "rps-game-container");
-        const gameContainer = document.getElementById('rps-container');
-        gameContainer.appendChild(gameDiv);
+        const numberOfRounds = +roundsElement.textContent;
+        console.log(numberOfRounds);
+        roundsElement.parentNode.removeChild(numberOfRounds);
+        const gameContainer = document.createElement('div');
+        gameContainer.setAttribute("id", "rps-game-container");
+        const moduleContainer = document.getElementById('rps-module-container');
+        gameContainer.appendChild(gameContainer);
         const instructionPara = document.createElement('p');
         const instructionText = document.createTextNode('Make your selection:');
         instructionPara.appendChild(instructionText);
-        gameDiv.appendChild(instructionPara);
+        gameContainer.appendChild(instructionPara);
         const submitButton = document.createElement('button');
         submitButton.setAttribute('id', 'rps-submit-button');
-        submitButtonText = document.createTextNode('Submit');
+        const submitButtonText = document.createTextNode('Submit');
         submitButton.appendChild(submitButtonText);
-        gameDiv.appendChild(submitButton);
-        
-
-
+        gameContainer.appendChild(submitButton);
     }
 })
 
