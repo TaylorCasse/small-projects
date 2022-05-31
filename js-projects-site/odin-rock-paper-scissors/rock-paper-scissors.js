@@ -88,11 +88,20 @@ document.getElementById('rps-rounds-button').addEventListener('click', () => {
         const instructionPara = document.createElement('p');
         const instructionText = document.createTextNode('Make your selection:');
         instructionPara.appendChild(instructionText);
+        gameDiv.appendChild(instructionPara);
+        const submitButton = document.createElement('button');
+        submitButton.setAttribute('id', 'rps-submit-button');
+        submitButtonText = document.createTextNode('Submit');
+        submitButton.appendChild(submitButtonText);
+        gameDiv.appendChild(submitButton);
+        
+
 
     }
 })
 
-document.getElementById('rps-button').addEventListener('click', () => {
+document.getElementById('rps-submit-button').addEventListener('click', () => {
+    console.log('Working');
     // Get selected radio input
     let playerInput;
     try {
