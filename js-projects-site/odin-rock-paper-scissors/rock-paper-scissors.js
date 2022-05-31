@@ -36,8 +36,8 @@ function compChoice() {
 }
 
 // initialize win counts
-let playerWins;
-let compWins;
+let playerWins = 0;
+let compWins = 0;
 
 function winCheck(playerInput, compInput) {
     // Checks the PLAYER'S win status
@@ -101,5 +101,7 @@ document.getElementById('rps-button').addEventListener('click', () => {
         case 'Draw':
             output.innerHTML = 'Draw';
     }
+
+    document.getElementById('win-counter-output').innerHTML = `Player wins: ${playerWins}<br>Computer wins: ${compWins}`;
 
 })
