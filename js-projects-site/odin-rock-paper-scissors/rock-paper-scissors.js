@@ -91,11 +91,11 @@ document.getElementById('rps-button').addEventListener('click', () => {
 
     switch (playerWinStatus) {
         case 'Win':
-            output.innerHTML = `${playerInput} beats ${compInput}<br>Player wins!`;
+            output.innerHTML = `${playerInput} beats ${compInput.toLowerCase()}.<br>Player wins!`;
             playerWins++;
             break;
         case 'Lose':
-            output.innerHTML = `${compInput} beats ${playerInput}<br>Computer wins!`;
+            output.innerHTML = `${compInput} beats ${playerInput.toLowerCase()}.<br>Computer wins...`;
             compWins++;
             break;
         case 'Draw':
