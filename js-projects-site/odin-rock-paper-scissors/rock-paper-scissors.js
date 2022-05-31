@@ -74,6 +74,24 @@ function winCheck(playerInput, compInput) {
     }
 }
 
+document.getElementById('rps-rounds-button').addEventListener('click', () => {
+    const rounds = document.getElementById('rps-rounds').value;
+    if (isNaN(rounds) || rounds === '' || +rounds < 0) {
+        alert('Please enter a valid number of rounds');
+    } else {
+        const roundsElement = document.getElementById('rps-initial-input');
+        roundsElement.parentNode.removeChild(roundsElement);
+        const gameDiv = document.createElement('div');
+        gameDiv.setAttribute("id", "rps-game-container");
+        const gameContainer = document.getElementById('rps-container');
+        gameContainer.appendChild(gameDiv);
+        const instructionPara = document.createElement('p');
+        const instructionText = document.createTextNode('Make your selection:');
+        instructionPara.appendChild(instructionText);
+
+    }
+})
+
 document.getElementById('rps-button').addEventListener('click', () => {
     // Get selected radio input
     let playerInput;
