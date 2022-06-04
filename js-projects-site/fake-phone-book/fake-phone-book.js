@@ -1,11 +1,12 @@
-function genRandInt(n, i) {
+function genRandInt(numberLimit, numberLength) {
     // TO FIX (probably with null check)
-    if (i === 1) {
-        let randNum = `${Math.floor(Math.random()*(10**n))}`;
-        return randNum.padEnd(n, '0');
+    // i = number length
+    if (numberLength === 1) {
+        let randNum = `${Math.floor(Math.random()*(10**numberLimit))}`;
+        return randNum.padEnd(numberLimit, '0');
     } else {
         // const difference = inLimitEnd - intLimitStart;
-        return Math.floor(Math.random()*i);
+        return Math.floor(Math.random()*numberLength);
     }
 }
 console.log(genRandInt(1, 5))
@@ -30,34 +31,99 @@ function genRandPhoneNumber() {
 const firstNames = ['Jack', 'John', 'Jason', 'Carl', 'Kyle', 'Jill', 'Yennifer', 'Sarah', 'Summer', 'Rick'];
 const lastNames = ['Johnnson', 'White', 'Pinkman', 'of Rivia', 'van Hellsing', 'Spires', 'Baker'];
 function genRandName() {
-    firstName = firstNames[genRandInt(1, firstNames.length)];
-    lastName = lastNames[genRandInt(1, lastNames.length)];
-    return `${firstName} ${lastName}`;
+    const firstName = firstNames[genRandInt(1, firstNames.length)];
+    const lastName = lastNames[genRandInt(1, lastNames.length)];
+    return [firstName, lastName];
 }
 
-function genPhonebook(n) {
+
+function genPhonebook(numberOfContacts) {
     const phoneBook = [];
-    for (let i = 0; i < n; i++) {
+    for (let i = 0; i < numberOfContacts; i++) {
+        let name = genRandName();
         contact = {
-            name: genRandName(),
-            phoneNumber: genRandPhoneNumber()
+            firstName: name[0],
+            lastName: name[1],
+            fullName: `${name[0]} ${name[1]}`,
+            class: `${name[0]}${name[1]}`.replace(/\s+/g, ''), // Remove whitespace with regex
+            number: genRandPhoneNumber(),
+            // outputText: `${name[0]} ${name[1]}\n${number}`
         }
         phoneBook.push(contact);
     }
+
     return phoneBook;
 }
 
-console.log(genPhonebook(10));
+console.log(Array.isArray(genPhonebook(10)));
+console.log(genPhonebook(4)[0].outputText);
+
+let phonebook;
+const phonebookOutput = document.querySelector('#contact-list');
+let phonebookOutputText;
+document.querySelector('#contact-gen-button').addEventListener( 'click', () => {
+    const numberOfContacts = document.querySelector('#contact-gen-input').value;
+    phonebookOutput.textContent = '';
+    phonebook = genPhonebook(numberOfContacts);
+
+    const phonebookDisplay = phonebook.map((contact) => `${contact.fullName}\n${contact.number}`)
+    phonebookOutput.textContent = phonebookDisplay.join('\n\n');
+    // for (let contact of phonebook) {
+    //     let newContactPara = document.createElement('p');
+    //     newContactPara.classList.add(contact.class);
+    //     newContactPara.textContent = `${contact.firstName} ${contact.lastName}\r\n${contact.number}`;
+    //     const phonebookArray = []
+    //     phonebookOutput.appendChild(newContactPara);
+    // }
+    numberOfContacts.textContent = '';
+    console.log(phonebook);
+})
+
 
 function phoneNumberCheck(n) {
     // Test for if all n phone numbers are the correct length
     phonebook = genPhonebook(n);
     for (let contact of phonebook) {
-        if (contact.phoneNumber.length !== 12) {
-            return `Test failed.\nNumber: ${contact.phoneNumber}\nLength: ${contact.phoneNumber.length}`;
+        if (contact.number.length !== 12) {
+            return `Test failed.\nNumber: ${contact.number}\nLength: ${contact.number.length}`;
         } 
     }
     return 'Test passed!';
 }
 
-// console.log(phoneNumberCheck(1000));
+
+document.querySelector('#contact-search-input').addEventListener('keyup', () => {
+    if (phonebook) {
+        const searchString = document.querySelector('#contact-search-input').value;
+
+        console.log(`phonebook: ${phonebook}`);
+  
+        const contactMatches = [];
+        for (let contact of phonebook) {
+            
+            if (contact.fullName.substr(0, searchString.length) === searchString) {
+                const elementToRemove = document.querySelector(`.${contact.class}`);
+                contactMatches.push(`${contact.fullName}\n${contact.number}`)
+                
+            } 
+        } 
+        phonebookOutput.textContent = contactMatches.join('\n\n');
+    } else {
+        phonebookOutput.textContent = "You haven't generated a contact list";
+    } 
+
+})
+
+// document.querySelector('#contact-search-button').addEventListener('click', () => {
+//     const searchString = document.querySelector('#contact-search-input').value;
+//     for (let contact of phonebook) {
+//         // Check to see if 
+//         if (searchString.includes(' ')) {
+//             searchString
+//         }
+        
+//     } 
+// })
+
+
+//console.log(phoneNumberCheck(1000));
