@@ -28,8 +28,8 @@ function genRandPhoneNumber() {
     return phoneNumber;
 }
 
-const firstNames = ['Jack', 'John', 'Jason', 'Carl', 'Kyle', 'Jill', 'Yennifer', 'Sarah', 'Summer', 'Rick'];
-const lastNames = ['Johnnson', 'White', 'Pinkman', 'of Rivia', 'van Hellsing', 'Spires', 'Baker'];
+const firstNames = ['Jack', 'John', 'Jason', 'Carl', 'Kyle', 'Jill', 'Yennifer', 'Sarah', 'Summer', 'Rick', 'Dirk', 'Matt', 'Lady', 'Andre', 'Josh', 'David', 'Herbert', 'Frank', 'Joe', 'Pam', 'Jim', 'Michael', 'Jeremy', 'Andrew', 'James', 'Richard'];
+const lastNames = ['Johnnson', 'White', 'Pinkman', 'of Rivia', 'van Hellsing', 'Spires', 'Baker', 'Gatsby', 'Whitehall', 'Miller', 'Sanders', 'of Light', 'Yagami', 'Turner', 'Black', 'Potter', 'Skywalker', 'Jackson', 'Woodhouse', 'Kane', 'Hoover'];
 function genRandName() {
     const firstName = firstNames[genRandInt(1, firstNames.length)];
     const lastName = lastNames[genRandInt(1, lastNames.length)];
