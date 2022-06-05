@@ -28,7 +28,7 @@ function genRandPhoneNumber() {
     return phoneNumber;
 }
 
-const firstNames = ['Jack', 'John', 'Jason', 'Carl', 'Kyle', 'Jill', 'Yennifer', 'Sarah', 'Summer', 'Rick', 'Dirk', 'Matt', 'Lady', 'Andre', 'Josh', 'David', 'Herbert', 'Frank', 'Joe', 'Pam', 'Jim', 'Michael', 'Jeremy', 'Andrew', 'James', 'Richard'];
+const firstNames = ['Jack','Olga', 'John', 'Taylor', 'Jason', 'Carl', 'Kyle', 'Jill', 'Yennifer', 'Sarah', 'Summer', 'Rick', 'Dirk', 'Matt', 'Lady', 'Andre', 'Josh', 'David', 'Herbert', 'Frank', 'Joe', 'Pam', 'Jim', 'Michael', 'Jeremy', 'Andrew', 'James', 'Richard'];
 const lastNames = ['Johnnson', 'White', 'Pinkman', 'of Rivia', 'van Hellsing', 'Spires', 'Baker', 'Gatsby', 'Whitehall', 'Miller', 'Sanders', 'of Light', 'Yagami', 'Turner', 'Black', 'Potter', 'Skywalker', 'Jackson', 'Woodhouse', 'Kane', 'Hoover'];
 function genRandName() {
     const firstName = firstNames[genRandInt(1, firstNames.length)];
@@ -62,6 +62,7 @@ let phonebook;
 const phonebookOutput = document.querySelector('#contact-list');
 let phonebookOutputText;
 document.querySelector('#contact-gen-button').addEventListener( 'click', () => {
+    // const dumbOrSmart = document.querySelector()
     const numberOfContacts = document.querySelector('#contact-gen-input').value;
     phonebookOutput.textContent = '';
     phonebook = genPhonebook(numberOfContacts);
@@ -91,39 +92,25 @@ function phoneNumberCheck(n) {
     return 'Test passed!';
 }
 
-
+// Automatically searches contacts for input string and updates the output every keystroke
 document.querySelector('#contact-search-input').addEventListener('keyup', () => {
     if (phonebook) {
-        const searchString = document.querySelector('#contact-search-input').value;
 
-        console.log(`phonebook: ${phonebook}`);
-  
+        const searchString = document.querySelector('#contact-search-input').value;
         const contactMatches = [];
+
         for (let contact of phonebook) {
-            
-            if (contact.fullName.substr(0, searchString.length) === searchString) {
-                const elementToRemove = document.querySelector(`.${contact.class}`);
-                contactMatches.push(`${contact.fullName}\n${contact.number}`)
-                
-            } 
+            if (contact.fullName.toLowerCase().includes(searchString.toLowerCase())) {
+                contactMatches.push(`${contact.fullName}\n${contact.number}`);
+            }
         } 
         phonebookOutput.textContent = contactMatches.join('\n\n');
+
     } else {
         phonebookOutput.textContent = "You haven't generated a contact list";
     } 
 
 })
-
-// document.querySelector('#contact-search-button').addEventListener('click', () => {
-//     const searchString = document.querySelector('#contact-search-input').value;
-//     for (let contact of phonebook) {
-//         // Check to see if 
-//         if (searchString.includes(' ')) {
-//             searchString
-//         }
-        
-//     } 
-// })
 
 
 //console.log(phoneNumberCheck(1000));
