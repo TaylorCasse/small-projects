@@ -96,14 +96,16 @@ function makeStartScreen() {
     roundsSubmitBtn.textContent = 'Play!';
     startingElement.appendChild(roundsSubmitBtn);
 
-    // mainContainer.appendChild(startingElement);
+    mainContainer.appendChild(startingElement);
 }
 
 function startGame() {
     console.log('makeGameScreen() called');
 }
  
-document.getElementById('rps-rounds-button').addEventListener('click', makeStartScreen())
+document.getElementById('rps-rounds-button').addEventListener('click', () => {
+    makeStartScreen()
+});
 
 
     // const rounds = document.getElementById('rps-rounds').value;
