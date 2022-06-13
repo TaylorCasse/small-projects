@@ -73,16 +73,27 @@ function winCheck(playerInput, compInput) {
     }
 }
 
+function rpsReset() {
+    // Make start screen
+    const startingElement = document.createElement('div');
+    startingElement.setAttribute('id', 'starting-container');
+}
+
+
 document.getElementById('rps-rounds-button').addEventListener('click', () => {
     const rounds = document.getElementById('rps-rounds').value;
     if (isNaN(rounds) || rounds === '' || +rounds < 0) {
         alert('Please enter a valid number of rounds');
     } else {
         // initialize initial variables
-        const roundsElement = document.getElementById('rps-initial-input');
-        const numberOfRounds = +roundsElement.textContent;
+        const initialElement = document.querySelector('#input-container');
+        const roundsInput = document.querySelector('#rps-initial-input');
+        const numberOfRounds = +roundsInput.textContent;
+
+        
+        
         console.log(numberOfRounds);
-        roundsElement.parentNode.removeChild(numberOfRounds);
+        roundsInput.parentNode.removeChild(numberOfRounds);
         const gameContainer = document.createElement('div');
         gameContainer.setAttribute("id", "rps-game-container");
         const moduleContainer = document.getElementById('rps-module-container');
