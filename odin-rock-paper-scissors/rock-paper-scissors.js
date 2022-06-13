@@ -35,7 +35,6 @@ function compChoice() {
     }
 }
 
-// initialize win counts
 let playerWins = 0;
 let compWins = 0;
 
@@ -73,72 +72,98 @@ function winCheck(playerInput, compInput) {
     }
 }
 
-function rpsReset() {
-    // Make start screen
+
+function makeStartScreen() {
+    console.log("hello")
+    const mainContainer = document.querySelector('#rps-container');
+    // Clear all child nodes from main container
+    mainContainer.textContent = '';
+
     const startingElement = document.createElement('div');
     startingElement.setAttribute('id', 'starting-container');
+    
+    const para = document.createElement('p');
+    para.textContent = "How many rounds?";
+    startingElement.appendChild(para);
+
+    const roundsInput = document.createElement('input');
+    roundsInput.setAttribute('id', 'rounds-input');
+    startingElement.appendChild(roundsInput);
+
+    const roundsSubmitBtn = document.createElement('button');
+    roundsSubmitBtn.setAttribute('id', 'rounds-submit-btn');
+    roundsSubmitBtn.addEventListener('click', startGame());
+    roundsSubmitBtn.textContent = 'Play!';
+    startingElement.appendChild(roundsSubmitBtn);
+
+    // mainContainer.appendChild(startingElement);
 }
 
+function startGame() {
+    console.log('makeGameScreen() called');
+}
+ 
+document.getElementById('rps-rounds-button').addEventListener('click', makeStartScreen())
 
-document.getElementById('rps-rounds-button').addEventListener('click', () => {
-    const rounds = document.getElementById('rps-rounds').value;
-    if (isNaN(rounds) || rounds === '' || +rounds < 0) {
-        alert('Please enter a valid number of rounds');
-    } else {
-        // initialize initial variables
-        const initialElement = document.querySelector('#input-container');
-        const roundsInput = document.querySelector('#rps-initial-input');
-        const numberOfRounds = +roundsInput.textContent;
+
+    // const rounds = document.getElementById('rps-rounds').value;
+    // if (isNaN(rounds) || rounds === '' || +rounds < 0) {
+    //     alert('Please enter a valid number of rounds');
+    // } else {
+    //     // initialize initial variables
+    //     const initialElement = document.querySelector('#input-container');
+    //     const roundsInput = document.querySelector('#rps-initial-input');
+    //     const numberOfRounds = +roundsInput.textContent;
 
         
         
-        console.log(numberOfRounds);
-        roundsInput.parentNode.removeChild(numberOfRounds);
-        const gameContainer = document.createElement('div');
-        gameContainer.setAttribute("id", "rps-game-container");
-        const moduleContainer = document.getElementById('rps-module-container');
-        gameContainer.appendChild(gameContainer);
-        const instructionPara = document.createElement('p');
-        const instructionText = document.createTextNode('Make your selection:');
-        instructionPara.appendChild(instructionText);
-        gameContainer.appendChild(instructionPara);
-        const submitButton = document.createElement('button');
-        submitButton.setAttribute('id', 'rps-submit-button');
-        const submitButtonText = document.createTextNode('Submit');
-        submitButton.appendChild(submitButtonText);
-        gameContainer.appendChild(submitButton);
-    }
-})
+    //     console.log(numberOfRounds);
+    //     roundsInput.parentNode.removeChild(numberOfRounds);
+    //     const gameContainer = document.createElement('div');
+    //     gameContainer.setAttribute("id", "rps-game-container");
+    //     const moduleContainer = document.getElementById('rps-module-container');
+    //     gameContainer.appendChild(gameContainer);
+    //     const instructionPara = document.createElement('p');
+    //     const instructionText = document.createTextNode('Make your selection:');
+    //     instructionPara.appendChild(instructionText);
+    //     gameContainer.appendChild(instructionPara);
+    //     const submitButton = document.createElement('button');
+    //     submitButton.setAttribute('id', 'rps-submit-button');
+    //     const submitButtonText = document.createTextNode('Submit');
+    //     submitButton.appendChild(submitButtonText);
+    //     gameContainer.appendChild(submitButton);
+    // }
+// })
 
-document.getElementById('rps-submit-button').addEventListener('click', () => {
-    console.log('Working');
-    // Get selected radio input
-    let playerInput;
-    try {
-        playerInput = document.querySelector("input[name=rps-input]:checked").value;
-    } catch (err) {
-        alert('Please make a selection');
-    }
+// document.getElementById('rps-submit-button').addEventListener('click', () => {
+//     console.log('Working');
+//     // Get selected radio input
+//     let playerInput;
+//     try {
+//         playerInput = document.querySelector("input[name=rps-input]:checked").value;
+//     } catch (err) {
+//         alert('Please make a selection');
+//     }
     
-    const output = document.getElementById('rps-output');
-    const compInput = compChoice();
-    const playerWinStatus = winCheck(playerInput, compInput);
+//     const output = document.getElementById('rps-output');
+//     const compInput = compChoice();
+//     const playerWinStatus = winCheck(playerInput, compInput);
 
     
 
-    switch (playerWinStatus) {
-        case 'Win':
-            output.innerHTML = `${playerInput} beats ${compInput.toLowerCase()}.<br>Player wins!`;
-            playerWins++;
-            break;
-        case 'Lose':
-            output.innerHTML = `${compInput} beats ${playerInput.toLowerCase()}.<br>Computer wins...`;
-            compWins++;
-            break;
-        case 'Draw':
-            output.innerHTML = 'Draw';
-    }
+//     switch (playerWinStatus) {
+//         case 'Win':
+//             output.innerHTML = `${playerInput} beats ${compInput.toLowerCase()}.<br>Player wins!`;
+//             playerWins++;
+//             break;
+//         case 'Lose':
+//             output.innerHTML = `${compInput} beats ${playerInput.toLowerCase()}.<br>Computer wins...`;
+//             compWins++;
+//             break;
+//         case 'Draw':
+//             output.innerHTML = 'Draw';
+//     }
 
-    document.getElementById('win-counter-output').innerHTML = `Player wins: ${playerWins}<br>Computer wins: ${compWins}`;
+//     document.getElementById('win-counter-output').innerHTML = `Player wins: ${playerWins}<br>Computer wins: ${compWins}`;
 
-})
+// })
