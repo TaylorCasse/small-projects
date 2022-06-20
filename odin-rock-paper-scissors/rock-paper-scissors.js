@@ -111,7 +111,8 @@ makeStartScreen();
 
 
 function makeGameScreen(rounds) {
-    mainContainer.textContent
+    mainContainer.textContent = '';
+    scoreTracker = document.createElement('div');
 }
 
 function startGame() {
