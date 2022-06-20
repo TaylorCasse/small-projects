@@ -72,10 +72,10 @@ function winCheck(playerInput, compInput) {
     }
 }
 
+const mainContainer = document.querySelector('#rps-container');
 
 function makeStartScreen() {
-    console.log("hello")
-    const mainContainer = document.querySelector('#rps-container');
+    console.log('makeStartScreen() called');
     // Clear all child nodes from main container
     mainContainer.textContent = '';
 
@@ -92,22 +92,43 @@ function makeStartScreen() {
 
     const roundsSubmitBtn = document.createElement('button');
     roundsSubmitBtn.setAttribute('id', 'rounds-submit-btn');
-    roundsSubmitBtn.addEventListener('click', startGame());
+    
+    // 1) For some reason, this form calls startGame() once when makeStartScreen() is called,
+    //    but it doesn't call startGame() when the button is clicked
+    // roundsSubmitBtn.addEventListener('click', startGame());
+
+    // 2) This works as expected
+    roundsSubmitBtn.addEventListener('click', () => {
+        startGame();
+    });
+    
     roundsSubmitBtn.textContent = 'Play!';
     startingElement.appendChild(roundsSubmitBtn);
 
     mainContainer.appendChild(startingElement);
 }
+makeStartScreen();
+
+
+function makeGameScreen(rounds) {
+    mainContainer.textContent
+}
 
 function startGame() {
-    console.log('makeGameScreen() called');
+    console.log('startGame() called');
+    const numberOfRounds = document.querySelector('#rounds-input').value;
+    mainContainer.textContent = '';
+    for (let i = 0; i < numberOfRounds; i++) {
+        console.log(`Iteration: ${i}`);
+    }
+    
 }
  
-document.getElementById('rps-rounds-button').addEventListener('click', () => {
-    makeStartScreen()
-});
+// document.getElementById('rps-rounds-button').addEventListener('click', () => {
+//     makeStartScreen()
+// });
 
-
+// document.getElementById('rps-rounds-button').addEventListener('click', makeStartScreen());
     // const rounds = document.getElementById('rps-rounds').value;
     // if (isNaN(rounds) || rounds === '' || +rounds < 0) {
     //     alert('Please enter a valid number of rounds');
